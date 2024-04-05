@@ -47,10 +47,10 @@ func (r *room) Run() {
 			if err != nil {
 				log.Println("Error unmarshaling message:", err)
 			}
-			//valid := mongo.SaveMessageToMongo(msgs)
-			//if !valid {
-			//	log.Println("Error saving message to mongo")
-			//}
+			valid := mongo.SaveMessageToMongo(msgs)
+			if !valid {
+				log.Println("Error saving message to mongo")
+			}
 
 			for client := range r.clients {
 				select {
